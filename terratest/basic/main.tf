@@ -65,13 +65,16 @@ resource "alicloud_instance" "default" {
   }
 }
 
-resource "alicloud_db_instance" "default" {
-  instance_name        = var.name
-  vswitch_id           = alicloud_vswitch.default.id
-  engine               = var.engine
-  engine_version       = var.engine_version
-  instance_type        = var.rds_instance_type
-  instance_storage     = var.instance_storage
-  instance_charge_type = var.instance_charge_type
-  monitoring_period    = var.monitoring_period
+resource "alicloud_polardb_cluster" "default" {
+  db_type       = "MySQL"
+  db_version    = var.db_version
+  pay_type      = var.pay_type
+  db_node_class = var.db_node_class
+  vswitch_id    = alicloud_vswitch.default.id
+  description   = var.description
+}
+
+resource "alicloud_polardb_database" "default" {
+  db_cluster_id = alicloud_polardb_cluster.default.id
+  db_name       = var.name
 }

@@ -1,13 +1,13 @@
 variable "name" {
   description = "The specification of module name."
   type        = string
-  default     = "tf-eip-slb-ecs-rds"
+  default     = "tf-eip-slb-ecs-polardb"
 }
 
 variable "description" {
   description = "The specification of module description."
   type        = string
-  default     = "tf-eip-slb-ecs-rds-description"
+  default     = "tf-eip-slb-ecs-polardb-description"
 }
 
 variable "available_disk_category" {
@@ -100,12 +100,6 @@ variable "engine_version" {
   default     = "5.6"
 }
 
-variable "rds_instance_type" {
-  description = "The specification of the rds instance type."
-  type        = string
-  default     = "rds.mysql.s2.large"
-}
-
 variable "instance_storage" {
   description = "The specification of the instance storage."
   type        = string
@@ -152,4 +146,22 @@ variable "eip_internet_charge_type" {
   description = "The specification of the eip internet charge type."
   type        = string
   default     = "PayByBandwidth"
+}
+
+variable "db_version" {
+  description = "The specification of the db version."
+  type        = string
+  default     = "8.0"
+}
+
+variable "pay_type" {
+  description = "The specification of the pay type."
+  type        = string
+  default     = "PostPaid"
+}
+
+variable "db_node_class" {
+  description = "The specification of the db node class."
+  type        = string
+  default     = "polar.mysql.x4.large"
 }

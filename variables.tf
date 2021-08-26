@@ -1,13 +1,13 @@
 variable "name" {
   description = "The specification of module name."
   type        = string
-  default     = "tf-eip-slb-ecs-rds"
+  default     = "tf-eip-slb-ecs-polardb"
 }
 
 variable "description" {
   description = "The specification of module description."
   type        = string
-  default     = "tf-eip-slb-ecs-rds-description"
+  default     = "tf-eip-slb-ecs-polardb-description"
 }
 
 variable "available_disk_category" {

@@ -13,24 +13,23 @@ import (
 
 func TestTerraformBasicExampleNew(t *testing.T) {
 	t.Parallel()
-	name := "tf-eip-slb-ecs-rds"
-	description := "tf-eip-slb-ecs-rds-description"
-	availableDiskCategory := "cloud_efficiency"
+	name := "tf-eip-slb-ecs-polardb"
+	description := "tf-eip-slb-ecs-polardb-description"
 	availableResourceCreation := "PolarDB"
 	vpcCidrBlock := "192.168.0.0/16"
 	vswitchCidrBlock := "192.168.1.0/24"
 	instanceType := "ecs.n4.large"
+	availableDiskCategory := "cloud_efficiency"
 	systemDiskCategory := "cloud_efficiency"
+	category := "cloud_efficiency"
 	systemDiskName := "system_disk"
 	systemDiskDescription := "system_disk_description"
 	imageId := "ubuntu_18_04_64_20G_alibase_20190624.vhd"
 	internetMaxBandwidthOut := 10
 	ecsSize := 1200
-	category := "cloud_efficiency"
 	securityIps := []string{"127.0.0.1"}
 	engine := "MySQL"
 	engineVersion := "5.6"
-	rdsInstanceType := "rds.mysql.s2.large"
 	instanceStorage := "30"
 	instanceChargeType := "Postpaid"
 	monitoringPeriod := "60"
@@ -39,6 +38,9 @@ func TestTerraformBasicExampleNew(t *testing.T) {
 	slbTagsInfo := "create for internet"
 	eipBandwidth := "10"
 	eipInternetChargeType := "PayByBandwidth"
+	dbVersion := "8.0"
+	payType := "PostPaid"
+	dbNodeClass := "polar.mysql.x4.large"
 
 	terraformOptions := &terraform.Options{
 		// The path to where our Terraform code is located
@@ -48,22 +50,21 @@ func TestTerraformBasicExampleNew(t *testing.T) {
 		Vars: map[string]interface{}{
 			"name":                        name,
 			"description":                 description,
-			"available_disk_category":     availableDiskCategory,
 			"available_resource_creation": availableResourceCreation,
 			"vpc_cidr_block":              vpcCidrBlock,
 			"vswitch_cidr_block":          vswitchCidrBlock,
 			"instance_type":               instanceType,
+			"available_disk_category":     availableDiskCategory,
 			"system_disk_category":        systemDiskCategory,
+			"category":                    category,
 			"system_disk_name":            systemDiskName,
 			"system_disk_description":     systemDiskDescription,
 			"image_id":                    imageId,
 			"internet_max_bandwidth_out":  internetMaxBandwidthOut,
 			"ecs_size":                    ecsSize,
-			"category":                    category,
 			"security_ips":                securityIps,
 			"engine":                      engine,
 			"engine_version":              engineVersion,
-			"rds_instance_type":           rdsInstanceType,
 			"instance_storage":            instanceStorage,
 			"instance_charge_type":        instanceChargeType,
 			"monitoring_period":           monitoringPeriod,
@@ -72,6 +73,9 @@ func TestTerraformBasicExampleNew(t *testing.T) {
 			"slb_tags_info":               slbTagsInfo,
 			"eip_bandwidth":               eipBandwidth,
 			"eip_internet_charge_type":    eipInternetChargeType,
+			"db_version":                  dbVersion,
+			"pay_type":                    payType,
+			"db_node_class":               dbNodeClass,
 		},
 
 		// Disable colors in Terraform commands, so it's easier to parse stdout/stderr
