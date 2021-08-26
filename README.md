@@ -32,7 +32,9 @@ These types of resources are supported:
 
 ```hcl
 module "eip-slb-ecs-polardb" {
-  source           = "../"
+  source           = "terraform-alicloud-modules/eip-slb-ecs-polardb"
+  profile          = "Your-Profile-Name"
+  region           = "cn-shenzhen"
   name             = "tf-eip-slb-ecs-polardb"
   instance_type    = "ecs.n4.large"
   db_node_class    = "polar.mysql.x4.large"

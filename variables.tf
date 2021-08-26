@@ -1,3 +1,33 @@
+#################
+# Provider
+#################
+variable "profile" {
+  description = "The profile name as set in the shared credentials file. If not set, it will be sourced from the ALICLOUD_PROFILE environment variable."
+  type        = string
+  default     = ""
+}
+
+variable "shared_credentials_file" {
+  description = "This is the path to the shared credentials file. If this is not set and a profile is specified, $HOME/.aliyun/config.json will be used."
+  type        = string
+  default     = ""
+}
+
+variable "region" {
+  description = "The region used to launch this module resources."
+  type        = string
+  default     = ""
+}
+
+variable "skip_region_validation" {
+  description = "Skip static validation of region ID. Used by users of alternative AlibabaCloud-like APIs or users w/ access to regions that are not public (yet)."
+  type        = bool
+  default     = false
+}
+
+#################
+# Modules
+#################
 variable "name" {
   description = "The specification of module name."
   type        = string
@@ -16,10 +46,22 @@ variable "available_disk_category" {
   default     = "cloud_efficiency"
 }
 
-variable "available_resource_creation" {
-  description = "The specification of available resource creation."
+variable "availability_zone" {
+  description = "The available zone to launch modules."
   type        = string
-  default     = "PolarDB"
+  default     = ""
+}
+
+variable "vswitch_id" {
+  description = "VSwitch variables, if vswitch_id is empty, then the net_type = classic."
+  type        = string
+  default     = ""
+}
+
+variable "security_group_ids" {
+  description = "A list of security group ids to associate with."
+  type        = list(string)
+  default     = []
 }
 
 variable "vpc_cidr_block" {
@@ -37,7 +79,7 @@ variable "vswitch_cidr_block" {
 variable "instance_type" {
   description = "The specification of the instance type."
   type        = string
-  default     = "ecs.n4.large"
+  default     = "ecs.s6-c1m2.small"
 }
 
 variable "system_disk_category" {
@@ -80,12 +122,6 @@ variable "category" {
   description = "The specification of the category."
   type        = string
   default     = "cloud_efficiency"
-}
-
-variable "security_ips" {
-  description = "The specification of the security ips."
-  type        = list(string)
-  default     = ["127.0.0.1"]
 }
 
 variable "engine" {

@@ -1,6 +1,8 @@
 package test
 
 import (
+	"fmt"
+	"github.com/gruntwork-io/terratest/modules/random"
 	"testing"
 
 	"github.com/gruntwork-io/terratest/modules/terraform"
@@ -13,34 +15,8 @@ import (
 
 func TestTerraformBasicExampleNew(t *testing.T) {
 	t.Parallel()
-	name := "tf-eip-slb-ecs-polardb"
-	description := "tf-eip-slb-ecs-polardb-description"
-	availableResourceCreation := "PolarDB"
-	vpcCidrBlock := "192.168.0.0/16"
-	vswitchCidrBlock := "192.168.1.0/24"
-	instanceType := "ecs.n4.large"
-	availableDiskCategory := "cloud_efficiency"
-	systemDiskCategory := "cloud_efficiency"
-	category := "cloud_efficiency"
-	systemDiskName := "system_disk"
-	systemDiskDescription := "system_disk_description"
-	imageId := "ubuntu_18_04_64_20G_alibase_20190624.vhd"
-	internetMaxBandwidthOut := 10
-	ecsSize := 1200
-	securityIps := []string{"127.0.0.1"}
-	engine := "MySQL"
-	engineVersion := "5.6"
-	instanceStorage := "30"
-	instanceChargeType := "Postpaid"
-	monitoringPeriod := "60"
-	slbAddressType := "intranet"
-	slbSpec := "slb.s2.small"
-	slbTagsInfo := "create for internet"
-	eipBandwidth := "10"
-	eipInternetChargeType := "PayByBandwidth"
-	dbVersion := "8.0"
-	payType := "PostPaid"
-	dbNodeClass := "polar.mysql.x4.large"
+
+	name := fmt.Sprintf("tf-test-%d.aliyun.com", random.Random(100, 1000))
 
 	terraformOptions := &terraform.Options{
 		// The path to where our Terraform code is located
@@ -48,36 +24,8 @@ func TestTerraformBasicExampleNew(t *testing.T) {
 
 		// Variables to pass to our Terraform code using -var options
 		Vars: map[string]interface{}{
-			"name":                        name,
-			"description":                 description,
-			"available_resource_creation": availableResourceCreation,
-			"vpc_cidr_block":              vpcCidrBlock,
-			"vswitch_cidr_block":          vswitchCidrBlock,
-			"instance_type":               instanceType,
-			"available_disk_category":     availableDiskCategory,
-			"system_disk_category":        systemDiskCategory,
-			"category":                    category,
-			"system_disk_name":            systemDiskName,
-			"system_disk_description":     systemDiskDescription,
-			"image_id":                    imageId,
-			"internet_max_bandwidth_out":  internetMaxBandwidthOut,
-			"ecs_size":                    ecsSize,
-			"security_ips":                securityIps,
-			"engine":                      engine,
-			"engine_version":              engineVersion,
-			"instance_storage":            instanceStorage,
-			"instance_charge_type":        instanceChargeType,
-			"monitoring_period":           monitoringPeriod,
-			"slb_address_type":            slbAddressType,
-			"slb_spec":                    slbSpec,
-			"slb_tags_info":               slbTagsInfo,
-			"eip_bandwidth":               eipBandwidth,
-			"eip_internet_charge_type":    eipInternetChargeType,
-			"db_version":                  dbVersion,
-			"pay_type":                    payType,
-			"db_node_class":               dbNodeClass,
+			"name": name,
 		},
-
 		// Disable colors in Terraform commands, so it's easier to parse stdout/stderr
 		NoColor: true,
 	}
@@ -89,16 +37,12 @@ func TestTerraformBasicExampleNew(t *testing.T) {
 	terraform.InitAndApply(t, terraformOptions)
 
 	// Run `terraform output` to get the values of output variables
+	thisSlbName := terraform.Output(t, terraformOptions, "this_slb_name")
+	thisPolardbName := terraform.Output(t, terraformOptions, "this_polardb_database_name")
 	thisEcsName := terraform.Output(t, terraformOptions, "this_ecs_name")
-	thisEcsInstanceType := terraform.Output(t, terraformOptions, "this_ecs_instance_type")
-	thisDbInstanceType := terraform.Output(t, terraformOptions, "this_db_instance_type")
-	thisSlbAddressType := terraform.Output(t, terraformOptions, "this_slb_address_type")
-	thisEipInternetChargeType := terraform.Output(t, terraformOptions, "this_eip_internet_charge_type")
 
 	// Verify we're getting back the outputs we expect
+	assert.Equal(t, thisSlbName, name)
+	assert.Equal(t, thisPolardbName, name)
 	assert.Equal(t, thisEcsName, name)
-	assert.Equal(t, thisEcsInstanceType, instanceType)
-	assert.Equal(t, thisDbInstanceType, thisDbInstanceType)
-	assert.Equal(t, thisSlbAddressType, slbAddressType)
-	assert.Equal(t, thisEipInternetChargeType, eipInternetChargeType)
 }

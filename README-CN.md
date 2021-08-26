@@ -32,7 +32,9 @@ terraform-alicloud-eip-slb-ecs-polardb
 
 ```hcl
 module "eip-slb-ecs-polardb" {
-  source           = "../"
+  source           = "terraform-alicloud-modules/eip-slb-ecs-polardb"
+  profile          = "Your-Profile-Name"
+  region           = "cn-shenzhen"
   name             = "tf-eip-slb-ecs-polardb"
   instance_type    = "ecs.n4.large"
   db_node_class    = "polar.mysql.x4.large"
@@ -42,13 +44,11 @@ module "eip-slb-ecs-polardb" {
 
 ## 注意事项
 
-* 本 Module 使用的 AccessKey 和 SecretKey 可以直接从 `profile` 和 `shared_credentials_file`
-  中获取。如果未设置，可通过下载安装 [aliyun-cli](https://github.com/aliyun/aliyun-cli#installation) 后进行配置.
+* 本 Module 使用的 AccessKey 和 SecretKey 可以直接从 `profile` 和 `shared_credentials_file` 中获取。如果未设置，可通过下载安装 [aliyun-cli](https://github.com/aliyun/aliyun-cli#installation) 后进行配置.
 
 ## 提交问题
 
-如果在使用该 Terraform Module
-的过程中有任何问题，可以直接创建一个 [Provider Issue](https://github.com/aliyun/terraform-provider-alicloud/issues/new)，我们将根据问题描述提供解决方案。
+如果在使用该 Terraform Module 的过程中有任何问题，可以直接创建一个 [Provider Issue](https://github.com/aliyun/terraform-provider-alicloud/issues/new)，我们将根据问题描述提供解决方案。
 
 **注意:** 不建议在该 Module 仓库中直接提交 Issue。
 
