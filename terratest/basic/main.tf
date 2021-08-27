@@ -1,12 +1,3 @@
-terraform {
-  required_providers {
-    alicloud = {
-      source  = "hashicorp/alicloud"
-      version = "1.126.0"
-    }
-  }
-}
-
 variable "region" {
   default = "cn-shenzhen"
 }
@@ -16,7 +7,7 @@ variable "profile" {
 }
 
 variable "name" {
-  default = "tf-eip-slb-ecs-polardb"
+  default = "terraform_test"
 }
 
 provider "alicloud" {

@@ -1,7 +1,7 @@
-Alicloud EIP&SLB&ECS&PolarDB Terraform Module On Alibaba Cloud
+Terraform module which creates web service with EIP&SLB&ECS&PolarDB on Alibaba Cloud
 
 terraform-alicloud-eip-slb-ecs-polardb
----
+=====================================================================
 
 English | [简体中文](README-CN.md)
 
@@ -15,24 +15,11 @@ These types of resources are supported:
 * [alicloud_slb_load_balancer](https://registry.terraform.io/providers/aliyun/alicloud/latest/docs/resources/slb_load_balancer)
 * [alicloud_eip](https://registry.terraform.io/providers/aliyun/alicloud/latest/docs/resources/eip)
 
-## Requirements
-
-| Name | Version |
-|------|---------|
-| <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | > = 0.13.0 |
-| <a name="requirement_alicloud"></a> [alicloud](#requirement\_alicloud) | > = 1.131.0 |
-
-## Providers
-
-| Name | Version |
-|------|---------|
-| <a name="provider_alicloud"></a> [alicloud](#provider\_alicloud) | > = 1.131.0 |
-
 ## Usage
 
 ```hcl
 module "eip-slb-ecs-polardb" {
-  source           = "terraform-alicloud-modules/eip-slb-ecs-polardb"
+  source           = "terraform-alicloud-modules/eip-slb-ecs-polardb/alicloud"
   profile          = "Your-Profile-Name"
   region           = "cn-shenzhen"
   name             = "tf-eip-slb-ecs-polardb"
@@ -52,7 +39,7 @@ module "eip-slb-ecs-polardb" {
 If you have any problems when using this module, please opening
 a [provider issue](https://github.com/aliyun/terraform-provider-alicloud/issues/new) and let us know.
 
-**Note:** There does not recommend to open an issue on this repo.
+**Note:** There does not recommend opening an issue on this repo.
 
 ## Authors
 

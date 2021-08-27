@@ -1,12 +1,3 @@
-terraform {
-  required_providers {
-    alicloud = {
-      source  = "hashicorp/alicloud"
-      version = "1.126.0"
-    }
-  }
-}
-
 provider "alicloud" {
   profile                 = var.profile != "" ? var.profile : null
   shared_credentials_file = var.shared_credentials_file != "" ? var.shared_credentials_file : null
