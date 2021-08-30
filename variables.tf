@@ -1,33 +1,3 @@
-#################
-# Provider
-#################
-variable "profile" {
-  description = "The profile name as set in the shared credentials file. If not set, it will be sourced from the ALICLOUD_PROFILE environment variable."
-  type        = string
-  default     = ""
-}
-
-variable "shared_credentials_file" {
-  description = "This is the path to the shared credentials file. If this is not set and a profile is specified, $HOME/.aliyun/config.json will be used."
-  type        = string
-  default     = ""
-}
-
-variable "region" {
-  description = "The region used to launch this module resources."
-  type        = string
-  default     = ""
-}
-
-variable "skip_region_validation" {
-  description = "Skip static validation of region ID. Used by users of alternative AlibabaCloud-like APIs or users w/ access to regions that are not public (yet)."
-  type        = bool
-  default     = false
-}
-
-#################
-# Modules
-#################
 variable "name" {
   description = "The specification of module name."
   type        = string
@@ -38,12 +8,6 @@ variable "description" {
   description = "The specification of module description."
   type        = string
   default     = "tf-eip-slb-ecs-polardb-description"
-}
-
-variable "available_disk_category" {
-  description = "The specification of available disk category."
-  type        = string
-  default     = "cloud_efficiency"
 }
 
 variable "availability_zone" {
@@ -62,18 +26,6 @@ variable "security_group_ids" {
   description = "A list of security group ids to associate with."
   type        = list(string)
   default     = []
-}
-
-variable "vpc_cidr_block" {
-  description = "The specification of the vpc cidr block."
-  type        = string
-  default     = "192.168.0.0/16"
-}
-
-variable "vswitch_cidr_block" {
-  description = "The specification of the vswitch cidr block."
-  type        = string
-  default     = "192.168.1.0/24"
 }
 
 variable "instance_type" {
@@ -122,12 +74,6 @@ variable "category" {
   description = "The specification of the category."
   type        = string
   default     = "cloud_efficiency"
-}
-
-variable "engine" {
-  description = "The specification of the engine."
-  type        = string
-  default     = "MySQL"
 }
 
 variable "engine_version" {

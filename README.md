@@ -5,7 +5,7 @@ terraform-alicloud-eip-slb-ecs-polardb
 
 English | [简体中文](README-CN.md)
 
-This module is used to create a lightweight web service under Alibaba Cloud EIP, SLB, ECS and RDS.
+This module is used to create a lightweight web service under Alibaba Cloud `EIP`, `SLB`, `ECS`, `RDS` and `PolarDB`.
 
 These types of resources are supported:
 
@@ -20,8 +20,6 @@ These types of resources are supported:
 ```hcl
 module "eip-slb-ecs-polardb" {
   source           = "terraform-alicloud-modules/eip-slb-ecs-polardb/alicloud"
-  profile          = "Your-Profile-Name"
-  region           = "cn-shenzhen"
   name             = "tf-eip-slb-ecs-polardb"
   instance_type    = "ecs.n4.large"
   db_node_class    = "polar.mysql.x4.large"
@@ -33,6 +31,19 @@ module "eip-slb-ecs-polardb" {
 
 * This module using AccessKey and SecretKey are from `profile` and `shared_credentials_file`. If you have not set them
   yet, please install [aliyun-cli](https://github.com/aliyun/aliyun-cli#installation) and configure it.
+
+## Requirements
+
+| Name | Version |
+|------|---------|
+| <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | > = 0.13.0 |
+| <a name="requirement_alicloud"></a> [alicloud](#requirement\_alicloud) | > = 1.56.0 |
+
+## Providers
+
+| Name | Version |
+|------|---------|
+| <a name="provider_alicloud"></a> [alicloud](#provider\_alicloud) | > = 1.56.0 |
 
 ## Submit Issues
 

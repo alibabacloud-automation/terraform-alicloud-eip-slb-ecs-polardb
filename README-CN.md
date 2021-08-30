@@ -5,7 +5,7 @@ terraform-alicloud-eip-slb-ecs-polardb
 
 [English](README.md) | 简体中文
 
-本 Module 用于在阿里云的 VPC 下创建一个轻量级 WEB 服务，包含：EIP、 SLB、 ECS、RDS。
+本 Module 用于在阿里云的 VPC 下创建一个轻量级 WEB 服务，包含：`EIP`、 `SLB`、 `ECS`、`RDS` 和 `PolarDB`。
 
 本 Module 支持创建以下资源:
 
@@ -33,6 +33,19 @@ module "eip-slb-ecs-polardb" {
 
 * 本 Module 使用的 AccessKey 和 SecretKey 可以直接从 `profile` 和 `shared_credentials_file`
   中获取。如果未设置，可通过下载安装 [aliyun-cli](https://github.com/aliyun/aliyun-cli#installation) 后进行配置.
+
+## 要求
+
+| Name | Version |
+|------|---------|
+| <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | > = 0.13.0 |
+| <a name="requirement_alicloud"></a> [alicloud](#requirement\_alicloud) | > = 1.56.0 |
+
+## Providers
+
+| Name | Version |
+|------|---------|
+| <a name="provider_alicloud"></a> [alicloud](#provider\_alicloud) | > = 1.56.0 |
 
 ## 提交问题
 

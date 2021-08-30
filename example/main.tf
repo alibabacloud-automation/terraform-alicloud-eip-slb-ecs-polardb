@@ -1,18 +1,10 @@
-variable "region" {
-  default = "cn-shenzhen"
-}
-
-variable "profile" {
-  default = "default"
-}
-
 variable "name" {
   default = "terraform_test"
 }
 
 provider "alicloud" {
-  region  = var.region
-  profile = var.profile
+  region  = "cn-shenzhen"
+  profile = "default"
 }
 
 data "alicloud_zones" "default" {
@@ -38,8 +30,7 @@ resource "alicloud_security_group" "default" {
 }
 
 module "example" {
-  source             = "../.."
-  region             = var.region
+  source             = "../"
   name               = var.name
   security_group_ids = [alicloud_security_group.default.id]
   vswitch_id         = alicloud_vswitch.default.id

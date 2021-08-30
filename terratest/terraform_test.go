@@ -16,11 +16,11 @@ import (
 func TestTerraformBasicExampleNew(t *testing.T) {
 	t.Parallel()
 
-	name := fmt.Sprintf("tf-test-%d.aliyun.com", random.Random(100, 1000))
+	name := fmt.Sprintf("tf-test-%d", random.Random(100, 1000))
 
 	terraformOptions := &terraform.Options{
 		// The path to where our Terraform code is located
-		TerraformDir: "./basic/",
+		TerraformDir: "../example/",
 
 		// Variables to pass to our Terraform code using -var options
 		Vars: map[string]interface{}{
