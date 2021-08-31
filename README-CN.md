@@ -20,8 +20,6 @@ terraform-alicloud-eip-slb-ecs-polardb
 ```hcl
 module "example" {
   source           = "terraform-alicloud-modules/eip-slb-ecs-polardb/alicloud"
-  profile          = "Your-Profile-Name"
-  region           = "cn-shenzhen"
   name             = "tf-eip-slb-ecs-polardb"
   instance_type    = "ecs.n4.large"
   db_node_class    = "polar.mysql.x4.large"
