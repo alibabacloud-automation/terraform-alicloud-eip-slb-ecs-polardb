@@ -2,11 +2,6 @@ variable "name" {
   default = "terraform_test"
 }
 
-provider "alicloud" {
-  region  = "cn-shenzhen"
-  profile = "default"
-}
-
 data "alicloud_zones" "default" {
   available_resource_creation = "PolarDB"
   enable_details              = true
