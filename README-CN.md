@@ -18,7 +18,7 @@ terraform-alicloud-eip-slb-ecs-polardb
 ## 用法
 
 ```hcl
-module "eip-slb-ecs-polardb" {
+module "example" {
   source           = "terraform-alicloud-modules/eip-slb-ecs-polardb/alicloud"
   profile          = "Your-Profile-Name"
   region           = "cn-shenzhen"
@@ -39,13 +39,13 @@ module "eip-slb-ecs-polardb" {
 | Name | Version |
 |------|---------|
 | <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | > = 0.13.0 |
-| <a name="requirement_alicloud"></a> [alicloud](#requirement\_alicloud) | > = 1.56.0 |
+| <a name="requirement_alicloud"></a> [alicloud](#requirement\_alicloud) | > = 1.131.0 |
 
 ## Providers
 
 | Name | Version |
 |------|---------|
-| <a name="provider_alicloud"></a> [alicloud](#provider\_alicloud) | > = 1.56.0 |
+| <a name="provider_alicloud"></a> [alicloud](#provider\_alicloud) | > = 1.131.0 |
 
 ## 提交问题
 
