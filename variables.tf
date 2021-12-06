@@ -31,7 +31,7 @@ variable "security_group_ids" {
 variable "instance_type" {
   description = "The specification of the instance type."
   type        = string
-  default     = "ecs.t1.xsmall"
+  default     = "ecs.g5.large"
 }
 
 variable "system_disk_category" {
