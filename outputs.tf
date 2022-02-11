@@ -23,5 +23,5 @@ output "this_slb_name" {
 }
 
 output "this_eip_id" {
-  value = alicloud_eip.default.id
+  value = alicloud_eip_address.default.id
 }
