@@ -171,26 +171,3 @@ variable "db_name" {
   default     = ""
 }
 
-variable "engine_version" {
-  description = "The specification of the engine version."
-  type        = string
-  default     = "5.6"
-}
-
-variable "instance_storage" {
-  description = "The specification of the instance storage."
-  type        = string
-  default     = "30"
-}
-
-variable "instance_charge_type" {
-  description = "The specification of the instance charge type."
-  type        = string
-  default     = "Postpaid"
-}
-
-variable "monitoring_period" {
-  description = "The specification of the monitoring period."
-  type        = string
-  default     = "60"
-}
