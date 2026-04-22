@@ -29,7 +29,7 @@ data "alicloud_polardb_node_classes" "default" {
 
 module "vpc" {
   source  = "alibaba/vpc/alicloud"
-  version = "~>1.11"
+  version = "2.0.0"
 
   create             = true
   vpc_name           = var.name
@@ -41,7 +41,7 @@ module "vpc" {
 
 module "security_group" {
   source  = "alibaba/security-group/alicloud"
-  version = "~>2.4"
+  version = "3.0.0"
 
   vpc_id = module.vpc.this_vpc_id
 }
