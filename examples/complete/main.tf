@@ -9,6 +9,7 @@ locals {
 }
 
 data "alicloud_images" "default" {
+  name_regex    = "^ubuntu_[0-9]+_[0-9]+_x64"
   most_recent   = true
   instance_type = data.alicloud_instance_types.default.instance_types[0].id
 }
